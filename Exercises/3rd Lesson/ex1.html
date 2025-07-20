@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div class="container">
+    </div>
+
+
+  <script type="text/babel">
+
+    const container = document.querySelector(".container");
+    ReactDOM.createRoot(container).render(<App/>);
+
+
+
+
+    function App(){
+        const [textMessage , setTextMessage] = React.useState({
+           counter : 0,
+           times : 'times'
+       });
+
+       function resetCounters(){
+        setTextMessage({
+            counter : 0,
+            times : 'times'
+        })
+       }
+
+        return (
+            <>
+                <Counter
+                    counter = {textMessage.counter}
+                    times = {textMessage.times}
+                    setTextMessage = {setTextMessage}
+                />
+                <Counter
+                    counter = {textMessage.counter}
+                    times = {textMessage.times}
+                    setTextMessage = {setTextMessage}
+                />
+                <button onClick={resetCounters}>Reset</button>
+            </>
+        );
+    }
+
+    function Counter({counter , times , setTextMessage}){
+
+        function clicked(){
+            const newCount = counter + 1;
+            setTextMessage({
+                counter : newCount,
+                times : (newCount == 1) ? 'time' : 'times'
+            });
+        }
+
+        return (
+            <button onClick={clicked}>
+                Clicked {counter} {times}
+            </button>
+        );
+    }
+
+  </script>
+    
+</body>
+</html>

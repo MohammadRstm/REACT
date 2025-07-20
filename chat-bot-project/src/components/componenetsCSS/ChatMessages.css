@@ -1,0 +1,8 @@
+
+   .messages-container{
+            overflow: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            margin-top: 20px;
+            flex-grow: 1;
+        }

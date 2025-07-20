@@ -1,0 +1,22 @@
+        .app-container{
+            max-width: 600px;
+            height: 100vh;
+            margin-left: auto;
+            margin-right: auto;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .empty-message{
+            
+            color:grey;
+            margin-top: 200px;
+            text-align: center;
+        }
+
+
+   
+       
+
+     

@@ -1,0 +1,52 @@
+.form-container{
+    overflow: hidden;
+    display: flex;
+    margin : auto;
+    border: none;
+    border-radius: 50px;
+    height: 500px;
+    background-color:brown;
+    max-width: 600px;
+    margin-top: 25px ;
+    flex-direction: column;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    max-width: 300px;
+    border-radius: 20px;
+    padding: 150px;
+    align-items: center;
+    color: white;
+    opacity: 0.9;
+}
+.input-container{
+    margin : 10px;
+}
+
+.input-user-text , .input-password-text{
+    flex-grow: 1;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;
+    height: 40px;
+    width : 400px;
+}
+
+.submit-button{
+    color: white;
+    background-color: black;
+    border: none;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.input-label{
+    font-size: 20px;
+    justify-content: center;
+    margin-left: 150px;
+    cursor: pointer;
+}

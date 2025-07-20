@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Advanced</title>
+</head>
+<body>
+
+    <style>
+        body{
+            margin-top:0px;
+            margin-bottom:0px;
+        }
+
+        button{
+            background-color: rgb(25 , 135 , 84);
+            color:white;
+            margin-left:10px;
+            padding : 10px 30px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .buttons-container{
+            background-color: rgb (222 , 222 ,222);
+            align-items: center;
+            height: 100vh;
+            display:flex;
+            justify-content: center;
+        }
+
+    </style>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div class="container">
+    </div>
+    
+
+
+    <script type="text/babel">
+
+        
+        const container = document.querySelector(".container");
+        ReactDOM.createRoot(container).render(<App/>);
+
+
+        function App(){
+
+            const [getCount , setgetCount] = React.useState({
+                count : 0,
+                times : "times"
+            });
+
+            
+            function count(){
+                const newCount = getCount.count + 1;
+                setgetCount({
+                    count : newCount,
+                    times : (newCount == 1) ? 'time' : 'times'
+                });
+            }
+
+
+            const clickerRef = React.useRef(null);
+
+            return (
+                <div className="buttons-container">
+                 <button
+                  ref = {clickerRef}
+                  onClick={count}
+                  >
+                  Clicked {getCount.count} {getCount.times}
+                </button>
+                 
+                  <ResetCounter 
+                  setgetCount = {setgetCount}
+                  />
+                  <AutoClick
+                  clickerRef = {clickerRef}
+                  />
+
+                </div>
+            );
+        }
+
+
+    function ResetCounter({setgetCount}){
+
+        function resetCounter(){
+            setgetCount({
+                count : 0,
+                times : "times"
+            })
+        }
+
+        return(
+            <button
+            onClick = {resetCounter}
+            >
+                Reset
+            </button>
+        )
+    }
+
+    function AutoClick({clickerRef}){        
+
+        function autoClicker(){
+            if (clickerRef){
+                setInterval(() =>{
+                    clickerRef.current.click();
+                } , 1000);
+            }
+        }
+
+        return(
+            <button
+            onClick = {autoClicker}
+            >
+            Auto Click
+            </button>
+        )
+    }
+
+
+    </script>
+</body>
+
+
+
+</html>

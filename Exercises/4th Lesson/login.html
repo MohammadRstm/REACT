@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In </title>
+</head>
+<body>
+
+    <style>
+        .submit-button , .show-button{
+            background-color: rgb(0 , 123 , 255);
+            color: white;
+            padding : 10px;
+            cursor: pointer;
+            margin-top:20px;
+            margin-right : 10px;
+            border:none;
+            border-radius: 5px;
+        }
+        .show-button{
+            margin-left: 5px;
+        }
+
+        .input-container{
+            padding:5px;
+            margin-bottom : -10px;
+        }
+
+        .input-text{
+            padding: 10px;
+            border-radius: 10px;
+            color:black;
+        }
+    </style>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div class="container">
+    </div>
+    
+
+
+    <script type="text/babel">
+
+        
+        const container = document.querySelector(".container");
+        ReactDOM.createRoot(container).render(<App/>);
+
+
+        function App(){
+            return (
+                <>
+                    <LoginForm/>
+                </>
+            );
+        }
+
+         function LoginForm(){
+
+            const [isShow , setisShow] = React.useState({
+                no : true
+            })
+
+            function doNothing(e){
+                e.preventDefault();
+            }
+
+            function showPassword(){
+                if (isShow.no){
+                    setisShow({
+                        no : false
+                    });
+                }else{
+                      setisShow({
+                        no : true
+                    });
+                }
+            }
+
+                return (
+                    <form method ="post" onSubmit = {doNothing}>
+                        <div className="input-container">
+                            <input 
+                                className="input-text"
+                                type="email"
+                                placeholder="Email"
+                            />
+                        </div>
+                        <div className="input-container">
+                            <input 
+                                className="input-text"
+                                type={(isShow.no) ? "password" : "text"}
+                                placeholder="Password"
+                            />
+                            <button 
+                            className="show-button"
+                            onClick={showPassword}
+                            >
+                                Show button
+                            </button>
+                        </div>
+                        <input 
+                        className= "submit-button"
+                        type="submit"
+                        value ="Log In"
+                        />
+                        <input 
+                        className= "submit-button"
+                        type="submit"
+                        value ="Sign Up"
+                        />
+                    </form>
+                );
+            }
+    </script>
+</body>
+
+
+
+</html>
