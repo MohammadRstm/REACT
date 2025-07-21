@@ -1,7 +1,7 @@
 import './App.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { HomePage } from './Pages/HomePage'
+import { HomePage } from './Pages/home/HomePage'
 import {Routes , Route} from 'react-router'
 import { ChecoutPage } from './Pages/checkout/CheckoutPage'
 import { OrdersPage } from './Pages/OrdersPage'
