@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { HomePage } from './Pages/home/HomePage'
 import {Routes , Route} from 'react-router'
-import { ChecoutPage } from './Pages/checkout/CheckoutPage'
+import { CheckoutPage } from './Pages/checkout/CheckoutPage'
 import { OrdersPage } from './Pages/orders/OrdersPage'
 import { TrackingPage } from './Pages/TrackingPage'
 import { NotFoundPage } from './Pages/NotFoundPage'
@@ -29,7 +29,8 @@ function App() {
       cart = {cart}
       loadCart = {loadCart}
       />} />
-      <Route path="checkout" element={<ChecoutPage
+      <Route path="checkout" element={<CheckoutPage
+      loadCart = {loadCart}
       cart = {cart}
       />} />
       <Route path="orders" element={<OrdersPage
