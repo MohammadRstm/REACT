@@ -35,6 +35,7 @@ return (
           deliveryOptions = {deliveryOptions}
           />
           <PaymentSummary
+          loadCart = {loadCart}
           paymentSummary={paymentSummary}
           />
         </div>

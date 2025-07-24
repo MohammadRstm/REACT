@@ -21,6 +21,7 @@ return (
         <div className="cart-item-details-grid">
             <CartItemDetails
             cartItem = {cartItem}
+            loadCart = {loadCart}
             />
             <DeliveryOptions
             loadCart = {loadCart}
