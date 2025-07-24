@@ -4,19 +4,21 @@ import { useEffect } from 'react'
 import { HomePage } from './Pages/home/HomePage'
 import {Routes , Route} from 'react-router'
 import { ChecoutPage } from './Pages/checkout/CheckoutPage'
-import { OrdersPage } from './Pages/OrdersPage'
+import { OrdersPage } from './Pages/orders/OrdersPage'
 import { TrackingPage } from './Pages/TrackingPage'
 import { NotFoundPage } from './Pages/NotFoundPage'
 import axios from 'axios'
 
 function App() {
-
     const [cart , setCart] = useState([]);
+
+        const loadCart = async () =>{
+        let response = await axios.get('/api/cart-items?expand=product');
+        setCart(response.data);
+      }
+
     useEffect(() =>{
-      axios.get('/api/cart-items?expand=product')
-            .then((response) =>{
-                setCart(response.data);
-            });
+      loadCart();
     }, []);
       
 
@@ -25,6 +27,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage
       cart = {cart}
+      loadCart = {loadCart}
       />} />
       <Route path="checkout" element={<ChecoutPage
       cart = {cart}
@@ -32,7 +35,9 @@ function App() {
       <Route path="orders" element={<OrdersPage
       cart = {cart}
       />} />
-      <Route path="tracking" element={<TrackingPage/>} />
+      <Route path="tracking/:orderId/:productId" element={<TrackingPage
+      cart = {cart}
+      />} />
       <Route path="*" element={<NotFoundPage/>} />
     </Routes>
     </>
