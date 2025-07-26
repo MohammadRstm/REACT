@@ -27,7 +27,7 @@ return(
         <div className="payment-summary-row">
             <div>Shipping &amp; handling:</div>
             <div className="payment-summary-money">
-                {formatMoney(paymentSummary.shippingCostCents)}
+                {formatMoney(paymentSummary.shippingCostCents)} 
             </div>
         </div>
 

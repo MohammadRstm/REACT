@@ -2,8 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import { formatMoney } from "../../utils/moneyFormat";
 
-export function Product({product , loadCart}){
+export function Product({ product , loadCart }){
     const [quantity , setQuantity] = useState(1);
+    const [appear , setAppear] = useState(false);
 
     const addToCart = async () => {
             await axios.post('/api/cart-items' , {
@@ -11,6 +12,10 @@ export function Product({product , loadCart}){
                  quantity
             });
             await loadCart();
+            setAppear(true);
+            setTimeout( ()=>{
+                setAppear(false);
+            } , 2000)
         }     
 
     const selectQuantity = (event) =>{
@@ -20,7 +25,7 @@ export function Product({product , loadCart}){
     return (
          <div key={product.id} className="product-container">
         <div className="product-image-container">
-            <img className="product-image" src={product.image} />
+            <img data-testid = "product-image" className="product-image" src={product.image} />
         </div>
 
         <div className="product-name limit-text-to-2-lines">
@@ -28,7 +33,10 @@ export function Product({product , loadCart}){
         </div>
 
         <div className="product-rating-container">
-            <img className="product-rating-stars" src={`images/ratings/rating-${product.rating.stars * 10}.png`} />
+            <img className="product-rating-stars" 
+            data-testid = "product-rating-image"
+            src={`images/ratings/rating-${product.rating.stars * 10}.png`}
+             />
             <div className="product-rating-count link-primary">
                 {product.rating.count}
             </div>
@@ -55,7 +63,9 @@ export function Product({product , loadCart}){
 
         <div className="product-spacer"></div>
 
-        <div className="added-to-cart">
+        <div className="added-to-cart"
+        style = {{opacity : appear ?  1 : 0}}
+        >
             <img src="images/icons/checkmark.png" />
             Added
         </div>

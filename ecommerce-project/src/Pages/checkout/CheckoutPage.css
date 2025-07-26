@@ -209,3 +209,11 @@
   margin-top: 20px;
   margin-bottom: 19px;
 }
+
+.update-input{
+  width: 50px;
+  margin-left: 2px;
+}
+.update-quantity-link{
+  margin-right: 3px;
+}
